@@ -2,8 +2,8 @@
   # Mobile Devtools config
   [params.mDevtools]
     enable = false
-    # "vConsole", "eruda" supported
-    type = "vConsole"
+    # "eruda", "vConsole" supported
+    type = "eruda"
 
 [module]
   [module.hugoVersion]

@@ -4,7 +4,9 @@ Mobile devtools component powered by vConsole and eruda.
 
 ## Requirements
 
-- FixIt v0.3.9 or later.
+- [FixIt](https://github.com/hugo-fixit/FixIt) v0.3.9 or later.
+- [eruda](https://github.com/liriliri/eruda)
+- [vConsole](https://github.com/Tencent/vConsole)
 
 ## Install Component
 
@@ -24,8 +26,8 @@ The installation method is the same as [installing a theme](https://fixit.lruiha
 # Mobile Devtools config
 [params.mDevtools]
   enable = false
-  # "vConsole", "eruda" supported
-  type = "vConsole"
+  # "eruda", "vConsole" supported
+  type = "eruda"
 ```
 
 ## Inject Partial

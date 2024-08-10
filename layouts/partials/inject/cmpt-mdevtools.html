@@ -2,10 +2,11 @@
 {{- $cdn := .Scratch.Get "cdn" | default dict -}}
 {{- $config := .Scratch.Get "config" | default dict -}}
 {{- $fingerprint := .Scratch.Get "fingerprint" -}}
-{{- $mDevtools := .Site.Params.mDevtools - }}
+{{- $mDevtools := .Site.Params.mDevtools -}}
 {{- if $mDevtools.enable | and hugo.IsServer -}}
   {{- $devtoolsJS := $cdn.vconsoleJS | default "lib/vconsole/vconsole.min.js" -}}
   {{- if eq $mDevtools.type "eruda" -}}
+    {{- /*  https://cdn.jsdelivr.net/npm/eruda@3.2.2/eruda.min.js */ -}}
     {{- $devtoolsJS = $cdn.erudaJS | default "lib/eruda/eruda.js" -}}
   {{- end -}}
   {{- dict "Source" $devtoolsJS "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
