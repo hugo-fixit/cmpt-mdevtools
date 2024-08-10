@@ -1,0 +1,18 @@
+{{- /* Mobile Devtools */ -}}
+{{- $cdn := .Scratch.Get "cdn" | default dict -}}
+{{- $config := .Scratch.Get "config" | default dict -}}
+{{- $fingerprint := .Scratch.Get "fingerprint" -}}
+{{- $mDevtools := .Site.Params.mDevtools - }}
+{{- if $mDevtools.enable | and hugo.IsServer -}}
+  {{- $devtoolsJS := $cdn.vconsoleJS | default "lib/vconsole/vconsole.min.js" -}}
+  {{- if eq $mDevtools.type "eruda" -}}
+    {{- $devtoolsJS = $cdn.erudaJS | default "lib/eruda/eruda.js" -}}
+  {{- end -}}
+  {{- dict "Source" $devtoolsJS "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+  <script>window.mDevtools = {{ $mDevtools.type | default "vConsole" }};</script>
+  {{- $options := dict "targetPath" "js/cmpt-mdevtools.min.js" "minify" hugo.IsProduction -}}
+  {{- if not hugo.IsProduction -}}
+    {{- $options = dict "sourceMap" "inline" | merge $options -}}
+  {{- end -}}
+  {{- dict "Source" "js/cmpt-mdevtools.js" "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+{{- end -}}

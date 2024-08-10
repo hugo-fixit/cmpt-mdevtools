@@ -1,10 +1,6 @@
-# {component-xxx}
+# cmpt-mdevtools
 
-TODO description here if needed
-
-## Demo
-
-TODO demo here if needed
+Mobile devtools component powered by vConsole and eruda.
 
 ## Requirements
 
@@ -19,29 +15,27 @@ The installation method is the same as [installing a theme](https://fixit.lruiha
   [[module.imports]]
     path = "github.com/hugo-fixit/FixIt"
 + [[module.imports]]
-+   path = "github.com/hugo-fixit/{component-xxx}"
++   path = "github.com/hugo-fixit/cmpt-mdevtools"
 ```
 
 ## Configuration
 
-TODO configuration here if needed
+```toml
+# Mobile Devtools config
+[params.mDevtools]
+  enable = false
+  # "vConsole", "eruda" supported
+  type = "vConsole"
+```
 
 ## Inject Partial
 
-Inject the `{component-xxx}.html` into the `custom-assets` through the custom block opened by the FixIt theme in the `layouts/partials/custom.html` file:
+Inject the `cmpt-mdevtools.html` into the `custom-assets` through the custom block opened by the FixIt theme in the `layouts/partials/custom.html` file:
 
 ```go-html-template
 {{- define "custom-assets" -}}
-  {{- partial "inject/{component-xxx}.html" . -}}
+  {{- partial "inject/cmpt-mdevtools.html" . -}}
 {{- end -}}
-```
-
-## Use Shortcode
-
-Here is an example of usage:
-
-```markdown
-{{< shortcode-xxx >}}
 ```
 
 ## References
