@@ -1,5 +1,7 @@
+import * as params from '@params';
+
 function initMDevtools() {
-  const type = window.mDevtools;
+  const type = params.mDevtoolsType;
   const fixit = window.fixit;
   if (typeof window.orientation === 'undefined') {
     return;
