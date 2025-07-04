@@ -5,7 +5,7 @@ name = 'cmpt-mdevtools'
 license = 'MIT'
 licenselink = 'https://github.com/hugo-fixit/cmpt-mdevtools/LICENSE'
 description = 'Mobile devtools component powered by vConsole and eruda.'
-min_version = "0.127.0"
+min_version = "0.146.0"
 
 # The home page of the theme, where the source can be found
 homepage = 'https://github.com/hugo-fixit/cmpt-mdevtools'
