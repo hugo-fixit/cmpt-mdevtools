@@ -1,0 +1,15 @@
+schemaVersion: 1
+baseDir: assets/lib
+libraries:
+  - npm: eruda
+    version:
+    local:
+      items:
+        - from: eruda.js
+          to: eruda/eruda.js
+  - npm: vconsole
+    version: 3.15.1
+    local:
+      items:
+        - from: dist/vconsole.min.js
+          to: vconsole/vconsole.min.js

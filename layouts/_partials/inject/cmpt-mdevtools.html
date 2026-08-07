@@ -1,18 +1,14 @@
 {{- /* Mobile Devtools */ -}}
 {{- $cdn := .Site.Store.Get "cdn" | default dict -}}
 {{- $fingerprint := .Site.Store.Get "fingerprint" -}}
-{{- $mDevtools := .Site.Params.mDevtools -}}
-{{- if $mDevtools.enable | and hugo.IsServer -}}
-  {{- $devtoolsJS := $cdn.vconsoleJS | default "lib/vconsole/vconsole.min.js" -}}
-  {{- if eq $mDevtools.type "eruda" -}}
-    {{- /*  https://cdn.jsdelivr.net/npm/eruda@3.2.2/eruda.min.js */ -}}
+{{- $config := .Site.Params.m_devtools -}}
+
+{{- if $config.enable | and hugo.IsServer -}}
+  {{- $devtoolsJS := $cdn.vConsoleJS | default "lib/vconsole/vconsole.min.js" -}}
+  {{- if eq $config.type "eruda" -}}
     {{- $devtoolsJS = $cdn.erudaJS | default "lib/eruda/eruda.js" -}}
   {{- end -}}
   {{- dict "Source" $devtoolsJS "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
-  {{- $options := dict "targetPath" "js/cmpt-mdevtools.min.js" "minify" hugo.IsProduction -}}
-  {{- $options = dict "mDevtoolsType" ($mDevtools.type | default "vConsole") | dict "params" | merge $options -}}
-  {{- if not hugo.IsProduction -}}
-    {{- $options = dict "sourceMap" "inline" | merge $options -}}
-  {{- end -}}
-  {{- dict "Source" "js/cmpt-mdevtools.js" "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
+  {{- $options := dict "params" (dict "mDevtoolsType" ($config.type | default "vConsole")) -}}
+  {{- dict "Source" "js/mdevtools.fixit.ts" "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
 {{- end -}}
