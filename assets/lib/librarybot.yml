@@ -2,7 +2,7 @@ schemaVersion: 1
 baseDir: assets/lib
 libraries:
   - npm: eruda
-    version:
+    version: 3.4.3
     local:
       items:
         - from: eruda.js
